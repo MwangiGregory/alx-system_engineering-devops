@@ -1,3 +1,5 @@
+#Using puppet to make changes to ssh_config file
+
 file { '/etc/ssh/ssh_config':
   ensure => present,
 }
