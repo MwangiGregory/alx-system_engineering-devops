@@ -4,5 +4,6 @@
 apt-get update
 apt-get -y install nginx
 echo "Hello World" > /var/www/html/index.html
+mkdir /var/www/html/redirect_me
 sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.github.com/tallninja permanent;" /etc/nginx/sites-available/default
 service nginx restart
