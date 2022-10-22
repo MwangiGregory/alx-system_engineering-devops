@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Returns information about an employee's TODO list progress"""
+
 if __name__ == "__main__":
     import requests
     import sys
