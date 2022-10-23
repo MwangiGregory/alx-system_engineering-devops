@@ -17,7 +17,7 @@ if __name__ == "__main__":
     tasks_dict[str(employee_id)] = []
     for todo in todos.json():
         temp = {}
-        temp['title'] = todo.get('title')
+        temp['task'] = todo.get('title')
         temp['completed'] = todo.get('completed')
         temp['username'] = employee_name
         tasks_dict[str(employee_id)].append(temp)
