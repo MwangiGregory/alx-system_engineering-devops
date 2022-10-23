@@ -11,7 +11,7 @@ if __name__ == "__main__":
     users_url = "https://jsonplaceholder.typicode.com/users"
     todos = requests.get(todos_url, params={"userId": employee_id})
     user = requests.get(users_url, params={"id": employee_id})
-    employee_name = user.json()[0].get("name")
+    employee_name = user.json()[0].get("username")
 
     fieldnames = ['userId', 'name', 'completed', 'title']
     todo_data = []
