@@ -3,3 +3,4 @@
 
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 service apache2 restart
+service apache2 status
