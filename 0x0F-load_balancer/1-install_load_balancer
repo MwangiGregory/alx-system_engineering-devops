@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Installs and configures HAproxy to send traffic to my web-01 and web-02
+# web servers. 
+
+apt update
+apt-get install --no-install-recommends software-properties-common -y
+add-apt-repository -y ppa:vbernat/haproxy-2.6
+apt-get install haproxy=2.6.\* -y
+
+printf %s "frontend loadbalancer
+	bind *:80
+	mode http
+	default_backend nginx_webservers
+backend nginx_webservers
+	balance roundrobin
+	server web-01 54.237.36.111:80 check
+	server web-02 34.239.207.173:80 check" >> /etc/haproxy/haproxy.cfg
+echo "" >> /etc/haproxy/haproxy.cfg
+
+service haproxy restart
