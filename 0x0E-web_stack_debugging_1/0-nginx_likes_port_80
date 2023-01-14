@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# Installs and starts an nginx webserver in my container
-
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart

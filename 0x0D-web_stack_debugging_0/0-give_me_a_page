@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# Command used to restart apache web server
-
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
-service apache2 restart
