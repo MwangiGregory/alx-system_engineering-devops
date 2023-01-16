@@ -8,9 +8,9 @@ if __name__ == "__main__":
     employee_id = sys.argv[1]
     payload = {'userId': employee_id}
     users_response = requests.get('https://jsonplaceholder.typicode.com/users',
-                                params={'id': employee_id})
+                                  params={'id': employee_id})
     todos_response = requests.get('https://jsonplaceholder.typicode.com/todos',
-                                params=payload)
+                                  params=payload)
     todos = todos_response.json()
     user = users_response.json()
     todos_total = len(todos)
@@ -21,8 +21,8 @@ if __name__ == "__main__":
         if todo.get('completed'):
             count += 1
 
-    print(f'Employee {employee_name} is done with tasks({count}/{todos_total}):')
+    print('Employee {} is done with tasks({}/{}):'
+          .format(employee_name, count, todos_total))
     for todo in todos:
         if todo.get('completed'):
             print(f"\t {todo.get('title')}")
-        
