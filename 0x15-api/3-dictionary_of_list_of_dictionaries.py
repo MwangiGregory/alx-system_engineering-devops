@@ -12,14 +12,15 @@ if __name__ == "__main__":
         for user in users:
             username = user.get('username')
             user_id = user.get('id')
-            tasks = requests.get(url + "todos",
-                                 params={'userId': user_id}).json()
-            user_tasks = []
-            for task in tasks:
-                temp = {}
-                temp['username'] = username
-                temp['task'] = task.get('title')
-                temp['completed'] = task.get('completed')
-                user_tasks.append(temp)
-            all_todos[user_id] = user_tasks
+            if user_id:
+                tasks = requests.get(url + "todos",
+                                    params={'userId': user_id}).json()
+                user_tasks = []
+                for task in tasks:
+                    temp = {}
+                    temp['username'] = username
+                    temp['task'] = task.get('title')
+                    temp['completed'] = task.get('completed')
+                    user_tasks.append(temp)
+                all_todos[user_id] = user_tasks
         json.dump(all_todos, f)
