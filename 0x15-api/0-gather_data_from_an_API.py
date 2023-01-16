@@ -25,4 +25,4 @@ if __name__ == "__main__":
           .format(employee_name, count, todos_total))
     for todo in todos:
         if todo.get('completed'):
-            print(f"\t {todo.get('title')}")
+            print("\t {}".format(todo.get('title')))
