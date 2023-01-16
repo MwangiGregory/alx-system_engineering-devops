@@ -13,7 +13,7 @@ if __name__ == "__main__":
             username = user.get('username')
             user_id = user.get('id')
             tasks = requests.get(url + "todos",
-            params={'userId': user_id}).json()
+                                 params={'userId': user_id}).json()
             user_tasks = []
             for task in tasks:
                 temp = {}
