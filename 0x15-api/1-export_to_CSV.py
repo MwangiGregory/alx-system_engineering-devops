@@ -15,6 +15,7 @@ if __name__ == "__main__":
     user = users_response.json()
     todos_total = len(todos)
     employee_name = user[0].get('name')
+    username = user[0].get('username')
 
     count = 0
     for todo in todos:
@@ -28,8 +29,9 @@ if __name__ == "__main__":
             print("\t {}".format(todo.get('title')))
 
     with open('{}.csv'.format(employee_id), 'a', encoding='utf-8') as f:
-        for todo in todos:
-            f.write('\"{}\",\"{}\",\"{}\",\"{}\"\n'.format(
-                    employee_id, employee_name,
+        for index, todo in enumerate(todos):
+            f.write('\"{}\",\"{}\",\"{}\",\"{}\"{}'.format(
+                    employee_id, username,
                     str(todo.get('completed')),
-                    todo.get('title')))
+                    todo.get('title'),
+                    '\n' if index < len(todos) - 1 else ''))
