@@ -15,7 +15,10 @@ def top_ten(subreddit):
                        url, allow_redirects=False,
                        headers=headers,
                        params=payload)
-    hot_posts = res.json()['data']['children']
-    for post in hot_posts:
-        post_title = post['data']['title']
-        print(post_title)
+    if res.status_code == 200:
+        hot_posts = res.json()['data']['children']
+        for post in hot_posts:
+            post_title = post['data']['title']
+            print(post_title)
+    else:
+        print(None)
