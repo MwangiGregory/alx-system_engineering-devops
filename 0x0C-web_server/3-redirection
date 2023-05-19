@@ -2,5 +2,12 @@
 # Configure a nginx server so that /redirect_me is redirecting to another page
 
 new_config="rewrite ^\/redirect_me$ http:\/\/gregmwangi.tech permanent;"
+
+apt-get update -y
+apt-get install nginx -y
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+service nginx restart
+
 sed -i "/listen \[::\]:80 default_server;/a $new_config" /etc/nginx/sites-available/default
 service nginx restart
