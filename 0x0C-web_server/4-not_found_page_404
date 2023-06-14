@@ -12,5 +12,5 @@ sed -i "/listen \[::\]:80 default_server;/a $new_config" /etc/nginx/sites-availa
 
 echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 sed -i "s/server_name _;/server_name gregmwangi.tech;/" /etc/nginx/sites-available/default
-sed -i "/root \/var\/www\/html;/a error_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
+sed -i "/root \/var\/www\/html;/a error_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
 service nginx restart
