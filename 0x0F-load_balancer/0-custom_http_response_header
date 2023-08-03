@@ -3,6 +3,6 @@
 
 hostname=$(hostname)
 
-sed -i "/root \/var\/www\/html;/a add_header X-Served-By $hostname;" /etc/nginx/sites-available/default
+sed -i "/root \/etc\/nginx\/html;/a add_header X-Served-By $hostname;" /etc/nginx/sites-available/default
 
 service nginx restart
