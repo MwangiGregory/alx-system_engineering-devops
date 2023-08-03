@@ -1,19 +1,8 @@
 #!/usr/bin/env bash
-# Configures my nginx server to have a custom 404 page that contains the string Ceci n'est pas une page
+# Configures an nginx server to return a custom HTTP response header
 
-new_config="rewrite ^\/redirect_me$ http:\/\/gregmwangi.tech permanent;"
 hostname=$(hostname)
 
-apt-get update -y
-apt-get install nginx -y
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-
-sed -i "/listen \[::\]:80 default_server;/a $new_config" /etc/nginx/sites-available/default
-
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
-sed -i "s/server_name _;/server_name gregmwangi.tech;/" /etc/nginx/sites-available/default
-sed -i "/root \/var\/www\/html;/a error_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
 sed -i "/root \/var\/www\/html;/a add_header X-Served-By $hostname;" /etc/nginx/sites-available/default
 
 service nginx restart
