@@ -1,13 +1,14 @@
-# Makes changes to the system wide ssh configuration file /etc/ssh/ssh_config
-# Adds a rule to prevent password login
-# sets default identity file to ~/.ssh/school
+# This manifest configures a local ssh client to refuse password-based logins
+# and to use a specific private key for all connections.
 
-
-
-exec {'prevent password login':
-  command  => '/usr/bin/echo "PasswordAuthentication no" >> /etc/ssh/config',
+file_line { 'PasswordAuthentication':
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => 'PasswordAuthentication no',
 }
 
-exec {'set default ssh identity file':
-  command => '/usr/bin/echo "IdentityFile ~/.ssh/school" >> /etc/ssh/config',
+file_line { 'IdentityFile':
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentityFile ~/.ssh/holberton',
 }
