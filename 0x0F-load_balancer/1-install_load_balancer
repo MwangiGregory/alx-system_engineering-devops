@@ -6,13 +6,13 @@ apt-get update -y
 apt-get upgrade -y
 
 # install haproxy
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.8
-apt-get install haproxy=2.8.\*
+apt-get install --no-install-recommends software-properties-common -y
+add-apt-repository ppa:vbernat/haproxy-2.8 -y
+apt-get install haproxy=2.8.\* -y
 
 # configure haproxy
 sed -i "$ a frontend hbnb_frontend\n\tbind :80\n\tdefault_backend hbnb_servers" /etc/haproxy/haproxy.cfg
 
-sed -i "$ a backend hbnb_servers\n\tbalance roundrobin\n\tserver 28313-web-01 18.234.253.132:80\n\tserver 28313-web-02 54.89.30.203" /etc/haproxy/haproxy.cfg
+sed -i "$ a backend hbnb_servers\n\tbalance roundrobin\n\tserver 28313-web-01 54.144.151.225:80\n\tserver 28313-web-02 54.173.54.146:80" /etc/haproxy/haproxy.cfg
 
 service haproxy restart
